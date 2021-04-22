@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: #C96567;">
     <v-app-bar app color="transparent" flat>
       <v-app-bar-title>Charon</v-app-bar-title>
       <v-spacer />
@@ -15,6 +15,7 @@
     <v-footer
       fixed
       app
+      color="primaryDarkest"
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>

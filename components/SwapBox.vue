@@ -1,7 +1,7 @@
 <template>
-  <v-card max-width="600px">
+  <v-card color="primaryDarker" max-width="600px" dark>
     <v-card-title>
-      Migrate your tokens
+      Swap between worlds
     </v-card-title>
     <v-card-content>
       <v-container>
@@ -18,7 +18,6 @@
               v-model="config.to"
               :items="options.to"
               label="To"
-              item-text="name"
             />
           </v-col>
         </v-row>
@@ -26,7 +25,7 @@
     </v-card-content>
     <v-card-actions>
       <v-spacer />
-      <v-btn>Next</v-btn>
+      <v-btn text>Next</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -38,13 +37,19 @@ export default {
   name: 'SwapBox',
   data: () => ({
     options: {
-      from: ['Ethereum'],
+      from: ['Ethereum, L1'],
       to: activeWorlds
     },
     config: {
-      from: 'Ethereum',
+      from: 'Ethereum, L1',
       to: null
     }
-  })
+  }),
+  created () {
+    this.options.to = activeWorlds.map(world => ({
+      ...world,
+      text: world.name + ', L' + world.layer
+    }))
+  }
 }
 </script>

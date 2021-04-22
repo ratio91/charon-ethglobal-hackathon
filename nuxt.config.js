@@ -63,13 +63,29 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultAssets: {
+      icons: 'md'
+    },
     theme: {
-      dark: false,
+      dark: true,
       themes: {
+        light: {
+          primary: '#433422',
+          primaryDarker: '#9E5A63',
+          primaryDarkest: '#644E5B',
+          accent: '#C96567',
+          secondary: '#314455',
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        },
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          primary: '#C96567',
+          primaryDarker: '#9E5A63',
+          primaryDarkest: '#644E5B',
+          accent: '#97AABD',
+          secondary: '#314455',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

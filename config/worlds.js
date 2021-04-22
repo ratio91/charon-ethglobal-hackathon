@@ -22,7 +22,7 @@ export const worlds = [
     name: 'Arbitrum',
     slug: 'arbitrum',
     layer: 2,
-    tags: [],
+    tags: ['Kovan'],
     isActive: true,
     color: '#'
   },
@@ -31,7 +31,7 @@ export const worlds = [
     name: 'Skale',
     slug: 'skale',
     layer: 2,
-    tags: [],
+    tags: ['Kovan'],
     isActive: true,
     color: '#'
   },
@@ -40,7 +40,7 @@ export const worlds = [
     name: 'Matic',
     slug: 'matic',
     layer: 2,
-    tags: [],
+    tags: ['Sidechain', 'Kovan'],
     isActive: true,
     color: '#'
   },
@@ -49,16 +49,16 @@ export const worlds = [
     name: 'zkSync',
     slug: 'zksync',
     layer: 2,
-    tags: [],
+    tags: ['ZK Rollup', 'Kovan'],
     isActive: false,
     color: '#'
   },
   {
     id: 6,
-    name: 'zkSync',
-    slug: 'zksync',
+    name: 'Loopring',
+    slug: 'loopring',
     layer: 2,
-    tags: [],
+    tags: ['ZK Rollup', 'Kovan'],
     isActive: false,
     color: '#'
   }

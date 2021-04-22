@@ -1,42 +1,43 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" class="my-5">
+    <v-col cols="12" class="my-7">
       <SwapBox />
     </v-col>
 
-    <v-col cols="12" class="my-5">
-      <h1 class="text-h4 font-weight-bold py-2">
+    <v-col cols="12" class="my-7">
+      <h1 class="text-h4 font-weight-bold my-2">
         Ethereum is scaling
       </h1>
-      <h2 class="text-h5 font-weight-light py-2">
+      <h2 class="text-h5 font-weight-light my-2">
         New worlds await, and charon is here to helps you reach them
       </h2>
-      <v-btn rounded outlined>
+      <v-btn class="my-2" rounded outlined>
         More info
       </v-btn>
     </v-col>
-    <v-col cols="12">
+    <v-col cols="12" class="my-7">
       <v-row>
         <v-col cols="12">
-          <h3 class="text-h6">
-            Worlds
+          <h3 class="text-h5 font-weight-bold">
+            <v-icon class="mr-1" large>
+              explore
+            </v-icon>
+            Discover
           </h3>
         </v-col>
-        <v-col v-for="dest in destinations" :key="'dest_' + dest.id" cols="12" md="4">
-          <v-card shaped :color="dest.color" dark>
+        <v-col v-for="world in worlds" :key="'dest_' + world.id" cols="12" md="4">
+          <v-card shaped light :to="'/worlds/' + world.slug" nuxt hover>
             <v-card-title>
-              {{ dest.name }}
+              {{ world.name }}, Layer {{ world.layer }}
             </v-card-title>
             <v-card-subtitle>
-              {{ dest.type }}
+              {{ world.type }}
             </v-card-subtitle>
-            <v-card-text>
-              {{ dest.description }}
-            </v-card-text>
             <v-card-actions>
-              <v-btn light>
-                explore
-              </v-btn>
+              <v-spacer />
+              <v-chip v-for="(tag, index) in world.tags" :key="'tag_' + index" color="secondary" class="ml-2">
+                {{ tag }}
+              </v-chip>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -47,15 +48,12 @@
 
 <script>
 import SwapBox from '@/components/SwapBox'
+import { worlds } from '@/config/worlds'
 
 export default {
   components: { SwapBox },
   data: () => ({
-    destinations: [
-      { id: 1, name: 'Optimism', description: 'Super cool L2 technology', type: 'Optimistic Rollup', isAvailable: true, color: 'error' },
-      { id: 2, name: 'Matic', description: 'Super cool L2 technology', type: 'Sidechain', isAvailable: true, color: 'primary' },
-      { id: 3, name: 'Arbitrum', description: 'Super cool L2 technology', type: 'Optimistic Rollup', isAvailable: false, color: 'secondary' }
-    ]
+    worlds
   })
 }
 </script>
