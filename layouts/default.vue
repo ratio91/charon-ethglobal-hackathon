@@ -1,5 +1,12 @@
 <template>
   <v-app>
+    <v-app-bar app color="transparent" flat>
+      <v-app-bar-title>Charon</v-app-bar-title>
+      <v-spacer />
+      <v-btn text>
+        Connect Metamask
+      </v-btn>
+    </v-app-bar>
     <v-main>
       <v-container>
         <nuxt />

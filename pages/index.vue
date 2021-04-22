@@ -1,12 +1,19 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" class="my-5">
-      <h1 class="text-center text-h2 font-weight-bold py-2">
-        Charon Project
+      <SwapBox />
+    </v-col>
+
+    <v-col cols="12" class="my-5">
+      <h1 class="text-h4 font-weight-bold py-2">
+        Ethereum is scaling
       </h1>
-      <h2 class="text-center text-h4 font-weight-light py-2">
-        Let the journey to the second layer worlds begin
+      <h2 class="text-h5 font-weight-light py-2">
+        New worlds await, and charon is here to helps you reach them
       </h2>
+      <v-btn rounded outlined>
+        More info
+      </v-btn>
     </v-col>
     <v-col cols="12">
       <v-row>
@@ -39,7 +46,10 @@
 </template>
 
 <script>
+import SwapBox from '@/components/SwapBox'
+
 export default {
+  components: { SwapBox },
   data: () => ({
     destinations: [
       { id: 1, name: 'Optimism', description: 'Super cool L2 technology', type: 'Optimistic Rollup', isAvailable: true, color: 'error' },
