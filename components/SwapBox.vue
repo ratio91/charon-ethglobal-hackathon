@@ -48,13 +48,32 @@
         Connect Metamask
       </v-btn>
       <v-spacer />
-      <v-btn v-if="step > 0" text color="grey" @click="reset">
+      <v-btn
+        v-if="step > 0"
+        text
+        color="grey"
+        @click="reset"
+      >
         Reset
       </v-btn>
-      <v-btn v-if="step === 0" text :loading="initing" :disabled="!selectedFrom || !selectedTo" @click="initConnext">
+      <v-btn
+        v-if="step === 0"
+        text
+        color="primary"
+        :loading="initing"
+        :disabled="!selectedFrom || !selectedTo"
+        @click="initConnext"
+      >
         Continue
       </v-btn>
-      <v-btn v-if="step === 1" text :loading="depositing" :disabled="!amount" @click="deposit">
+      <v-btn
+        v-if="step === 1"
+        text
+        color="primary"
+        :loading="depositing"
+        :disabled="!amount"
+        @click="deposit"
+      >
         Continue
       </v-btn>
       <!-- <v-btn v-if="step === 3" text :loading="swaping" @click="swap">
