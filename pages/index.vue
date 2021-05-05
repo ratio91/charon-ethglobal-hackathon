@@ -1,9 +1,5 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" class="my-7">
-      <SwapBox />
-    </v-col>
-
     <div class="box-drift">
       <div class="box-bob">
         <div class="box-pitch">
@@ -56,6 +52,21 @@
               </v-chip>
             </v-card-actions>
           </v-card>
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col cols="12">
+      <v-row>
+        <v-col cols="12">
+          <h3 class="text-h5 font-weight-bold">
+            <v-icon class="mr-1" large>
+              square_foot
+            </v-icon>
+            Tools
+          </h3>
+        </v-col>
+        <v-col cols="12">
+          <SwapBox />
         </v-col>
       </v-row>
     </v-col>
@@ -136,19 +147,19 @@ $white-sail: #a8dadc;
 
 @keyframes doBob {
   0% {
-    top: 55%;
+    top: 20%;
   }
   50% {
-    top: 47%;
+    top: 12%;
   }
   100% {
-    top: 55%;
+    top: 20%;
   }
 }
 
 @keyframes doDrift {
   0% {
-    left: 0%;
+    left: -10%;
   }
   10% {
     left: 10%;
@@ -166,7 +177,7 @@ $white-sail: #a8dadc;
     left: 80%;
   }
   100% {
-    left: 90%;
+    left: 110%;
   }
 }
 
