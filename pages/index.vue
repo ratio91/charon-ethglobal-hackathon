@@ -10,16 +10,19 @@
       </div>
     </div>
 
-    <v-col cols="12" class="my-7">
+    <v-col cols="6" class="my-7">
       <h1 class="text-h4 font-weight-bold my-2">
         Ethereum is scaling
       </h1>
       <h2 class="text-h5 font-weight-light my-2">
-        New worlds await, and charon is here to helps you reach them
+        New worlds await and Charon is the ferryman who helps you reach them
       </h2>
-      <v-btn class="my-2" rounded outlined>
+      <v-btn class="my-2" rounded outlined nuxt to="/about">
         More info
       </v-btn>
+    </v-col>
+    <v-col cols="6" class="my-7">
+      <SwapBox />
     </v-col>
     <v-col cols="12" class="my-7">
       <v-row>
@@ -40,33 +43,25 @@
             hover
           >
             <v-card-title>
-              {{ world.name }}, Layer {{ world.layer }}
+              <span>{{ world.name }}, Layer {{ world.layer }}</span>
+              <v-spacer />
+              <v-chip v-if="world.isActive" outlined color="#ee6c4d">Live</v-chip>
             </v-card-title>
             <v-card-subtitle>
               {{ world.type }}
             </v-card-subtitle>
             <v-card-actions>
               <v-spacer />
-              <v-chip v-for="(tag, index) in world.tags" :key="'tag_' + index" color="primary" class="ml-2">
-                {{ tag }}
+              <v-chip v-for="(type, index) in world.types" :key="'tag_type_' + index" color="primary" class="ml-2">
+                <v-icon left>share</v-icon>
+                {{ type }}
+              </v-chip>
+              <v-chip v-for="(network, index) in world.networks" :key="'tag_net_' + index" color="primary" class="ml-2">
+                <v-icon left>public</v-icon>
+                {{ network }}
               </v-chip>
             </v-card-actions>
           </v-card>
-        </v-col>
-      </v-row>
-    </v-col>
-    <v-col cols="12">
-      <v-row>
-        <v-col cols="12">
-          <h3 class="text-h5 font-weight-bold">
-            <v-icon class="mr-1" large>
-              square_foot
-            </v-icon>
-            Tools
-          </h3>
-        </v-col>
-        <v-col cols="12">
-          <SwapBox />
         </v-col>
       </v-row>
     </v-col>
@@ -147,13 +142,13 @@ $white-sail: #a8dadc;
 
 @keyframes doBob {
   0% {
-    top: 20%;
+    top: 25%;
   }
   50% {
-    top: 12%;
+    top: 17%;
   }
   100% {
-    top: 20%;
+    top: 25%;
   }
 }
 
@@ -161,20 +156,11 @@ $white-sail: #a8dadc;
   0% {
     left: -10%;
   }
-  10% {
-    left: 10%;
+  30% {
+    left: 35%;
   }
-  20% {
-    left: 20%;
-  }
-  50% {
-    left: 50%;
-  }
-  50% {
-    left: 50%;
-  }
-  80% {
-    left: 80%;
+  70% {
+    left: 35%;
   }
   100% {
     left: 110%;

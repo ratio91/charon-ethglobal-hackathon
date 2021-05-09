@@ -13,7 +13,8 @@ export const worlds = [
     name: 'Optimism',
     slug: 'optimism',
     layer: 2,
-    tags: ['Optimistic Rollup', 'Kovan'],
+    networks: ['Kovan'],
+    types: ['Optimistic Rollup'],
     isActive: true,
     color: '#'
   },
@@ -22,7 +23,8 @@ export const worlds = [
     name: 'Arbitrum',
     slug: 'arbitrum',
     layer: 2,
-    tags: ['Kovan'],
+    networks: ['Kovan'],
+    types: ['Optimistic Rollup'],
     isActive: true,
     color: '#'
   },
@@ -31,7 +33,8 @@ export const worlds = [
     name: 'Skale',
     slug: 'skale',
     layer: 2,
-    tags: ['Kovan'],
+    networks: ['Rinkeby'],
+    types: ['Sidechain'],
     isActive: true,
     color: '#'
   },
@@ -40,7 +43,8 @@ export const worlds = [
     name: 'Matic',
     slug: 'matic',
     layer: 2,
-    tags: ['Sidechain', 'Kovan'],
+    networks: ['Mumbai'],
+    types: ['Sidechain', 'Plasma'],
     isActive: true,
     color: '#'
   },
@@ -49,7 +53,8 @@ export const worlds = [
     name: 'zkSync',
     slug: 'zksync',
     layer: 2,
-    tags: ['ZK Rollup', 'Kovan'],
+    networks: ['Kovan'],
+    types: ['ZK Rollup'],
     isActive: false,
     color: '#'
   },
@@ -58,7 +63,8 @@ export const worlds = [
     name: 'Loopring',
     slug: 'loopring',
     layer: 2,
-    tags: ['ZK Rollup', 'Kovan'],
+    networks: ['Goerli'],
+    types: ['ZK Rollup'],
     isActive: false,
     color: '#'
   }

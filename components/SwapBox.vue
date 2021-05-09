@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="600px" light>
+  <v-card max-width="600px" light shaped>
     <v-card-title>
       Swap between worlds
     </v-card-title>
@@ -24,22 +24,26 @@
               :readonly="step > 0"
             />
           </v-col>
-          <v-col v-if="step > 0" cols="6">
-            <v-text-field
-              v-model="amount"
-              :readonly="depositing"
-              label="Amount"
-              :hint="'Fees : ' + fees"
-              persistent-hint
-            />
-          </v-col>
-          <v-col v-if="step > 1" cols="6">
-            <v-text-field
-              v-model="address"
-              :readonly="depositing"
-              label="Address"
-            />
-          </v-col>
+          <v-slide-y-transition>
+            <v-col v-if="step > 0" cols="6">
+              <v-text-field
+                v-model="amount"
+                :readonly="depositing"
+                label="Amount"
+                :hint="'Fees : ' + fees"
+                persistent-hint
+              />
+            </v-col>
+          </v-slide-y-transition>
+          <v-slide-y-transition>
+            <v-col v-if="step > 0" cols="6">
+              <v-text-field
+                v-model="address"
+                :readonly="depositing"
+                label="Address"
+              />
+            </v-col>
+          </v-slide-y-transition>
         </v-row>
       </v-container>
     </v-card-text>
@@ -48,37 +52,50 @@
         Connect Metamask
       </v-btn>
       <v-spacer />
-      <v-btn
-        v-if="step > 0"
-        text
-        color="grey"
-        @click="reset"
-      >
-        Reset
-      </v-btn>
-      <v-btn
-        v-if="step === 0"
-        text
-        color="primary"
-        :loading="initing"
-        :disabled="!selectedFrom || !selectedTo"
-        @click="initConnext"
-      >
-        Continue
-      </v-btn>
-      <v-btn
-        v-if="step === 1"
-        text
-        color="primary"
-        :loading="depositing"
-        :disabled="!amount"
-        @click="deposit"
-      >
-        Continue
-      </v-btn>
-      <!-- <v-btn v-if="step === 3" text :loading="swaping" @click="swap">
-        Cross Swap
-      </v-btn> -->
+      <v-slide-x-transition group>
+        <v-btn
+          v-if="step > 0"
+          key="reset"
+          text
+          color="grey"
+          @click="reset"
+        >
+          Reset
+        </v-btn>
+        <v-btn
+          v-if="step === 0"
+          key="init"
+          text
+          color="primary"
+          :loading="initing"
+          :disabled="!selectedFrom || !selectedTo"
+          @click="initConnext"
+        >
+          Continue
+        </v-btn>
+        <v-btn
+          v-if="step === 1"
+          key="deposit"
+          text
+          color="primary"
+          :loading="depositing"
+          :disabled="!amount"
+          @click="deposit"
+        >
+          Deposit
+        </v-btn>
+        <v-btn
+          v-if="step === 2"
+          key="swap"
+          text
+          color="primary"
+          :loading="swaping"
+          :disabled="address === ''"
+          @click="swap"
+        >
+          Swap
+        </v-btn>
+      </v-slide-x-transition>
     </v-card-actions>
   </v-card>
 </template>
@@ -103,7 +120,7 @@ export default {
     selectedTo: null,
     step: 0,
     amount: '0',
-    address: '0x4CcAE7acA0c3Ec55E1496F4db45f615A99A919Ae',
+    address: '',
     fees: 0
   }),
   computed: {
@@ -130,7 +147,7 @@ export default {
   },
   watch: {
     selectedFrom () {
-      this.selectedTo = null
+      this.selectedTo = this.toOptions[0]
     },
     async amount (value) {
       if (value === 0) {
@@ -140,6 +157,9 @@ export default {
         this.fees = res.totalFee
       }
     }
+  },
+  created () {
+    this.selectedFrom = this.fromOptions[0]
   },
   mounted () {
     this.connextSdk = new ConnextSdk()
@@ -171,18 +191,18 @@ export default {
     async deposit () {
       this.depositing = true
       try {
-        const res = await this.connextSdk.deposit({ transferAmount: this.amount, webProvider: this.webProvider })
+        const res = await this.connextSdk.deposit({ transferAmount: this.amount, webProvider: this.webProvider, onDeposited: () => (this.depositing = false) })
         console.log(res)
         this.step++
       } catch (error) {
         console.log(error)
+        this.depositing = false
       }
-      this.depositing = false
     },
     async swap () {
       this.swaping = true
       try {
-        const res = await this.connextSdk.crossChainSwap(this.address)
+        const res = await this.connextSdk.crossChainSwap({ recipientAddress: this.address })
         console.log(res)
       } catch (error) {
         console.log(error)
