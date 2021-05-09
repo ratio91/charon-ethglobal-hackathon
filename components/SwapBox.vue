@@ -35,15 +35,15 @@
               />
             </v-col>
           </v-slide-y-transition>
-          <v-slide-y-transition>
-            <v-col v-if="step > 0" cols="6">
+          <v-slide-x-transition>
+            <v-col v-if="step > 1" cols="6">
               <v-text-field
                 v-model="address"
                 :readonly="depositing"
                 label="Address"
               />
             </v-col>
-          </v-slide-y-transition>
+          </v-slide-x-transition>
         </v-row>
       </v-container>
     </v-card-text>
@@ -52,7 +52,7 @@
         Connect Metamask
       </v-btn>
       <v-spacer />
-      <v-slide-x-transition group>
+      <v-slide-x-transition group mode="out-in">
         <v-btn
           v-if="step > 0"
           key="reset"
@@ -119,7 +119,7 @@ export default {
     selectedFrom: null,
     selectedTo: null,
     step: 0,
-    amount: '0',
+    amount: '0.01',
     address: '',
     fees: 0
   }),
