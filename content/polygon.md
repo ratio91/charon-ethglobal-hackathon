@@ -1,5 +1,5 @@
 ---
-title: Polygon (matic)
+title: Polygon (formerly Matic)
 description: 'quick facts about Polygon'
 ---
 
@@ -15,9 +15,9 @@ description: 'quick facts about Polygon'
 
 **How:** $5M private sale and launchpad sale, now listed on Coinbase and valued at almost $4B
 
-**Strengths:** Live layer 2 solution with long list of clients
+**Strengths:** Live layer 2 solution with long list of clients (Aave, Curve, etc.). Unlike other Plasma solutions, transfer from L2 back to L1 only takes about 15 minutes.
 
-**Weaknesses:** Sending tokens back to Ethereum takes 7 days
+**Weaknesses:** Matic Token (needed to pay gas fees on the network) have a very volatile price
 
 **Traction:** uncertain  
 
